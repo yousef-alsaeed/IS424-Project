@@ -1,0 +1,14 @@
+{% extends "restaurant/layout.html" %}
+
+{% block body %}
+<h2>Sign Up</h2>
+<form method="post" action="{% url 'restaurant:signup' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Sign Up</button>
+</form>
+{% if error %}
+<p style="color: red;">{{ error }}</p>
+{% endif %}
+<p><a href="{% url 'restaurant:login' %}">Login</a></p>
+{% endblock %}

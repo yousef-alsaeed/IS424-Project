@@ -1,0 +1,32 @@
+{% extends "restaurant/layout.html" %}
+{% load static %}
+
+{% block body %}
+<link rel="stylesheet" type="text/css" href="{% static 'restaurant/style.css' %}">
+<h2>Menu</h2>
+<table id="menu_table">
+    <thead>
+        <tr>
+            <th>Menu item name</th>
+            <th>Price</th>
+            <th>Time to Serve</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in menu_items %}
+        <tr>
+            <td>{{ item.name }}</td>
+            <td>${{ item.price }}</td>
+            <td>{{ item.time_to_serve }} minutes</td>
+            <td>{{ item.description }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">No menu items available.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{% url 'restaurant:add_menu_item' %}">Add New Menu Item</a>
+{% endblock %}
