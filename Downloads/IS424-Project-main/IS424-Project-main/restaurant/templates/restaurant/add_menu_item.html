@@ -1,0 +1,11 @@
+{% extends "restaurant/layout.html" %}
+
+{% block body %}
+<h2>Add Menu Item</h2>
+ <!-- deleted the url and added the update --> >
+<form method="post" action="">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">{% if form.instance.pk %}Update{% else %}Add{% endif %} Item</button>
+</form>
+{% endblock %}
